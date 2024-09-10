@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room do Amor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container" id="phase1">
+        <h1>Bem-vinda ao Escape Room do Amor!</h1>
+        <p>Clique no lugar certo para começar a jornada do amor. (Dica: O amor está em todo lugar... mas você tem que achar!)</p>
+        
+        <div id="hidden-heart"></div>
+    </div>
+
+    <div class="game-container" id="phase2" style="display: none;">
+        <h1>Você achou o coração! ❤️</h1>
+        <p>Agora resolva este enigma: "O que é mais forte que o vento, mas não pode ser visto?"</p>
+        <input type="text" id="riddle-answer" placeholder="Digite sua resposta">
+        <button onclick="checkAnswer()">Enviar</button>
+        <p id="riddle-feedback" style="color: red; display: none;">Resposta errada! Tente de novo.</p>
+    </div>
+
+    <div class="game-container" id="final-message" style="display: none;">
+        <h1>Parabéns!</h1>
+        <p>Você escapou da sala do amor e resgatou meu coração! 💖</p>
+        <p>Eu te amo mais do que tudo! 😘</p>
+    </div>
+
+    <script>
+        // Fase 1: Encontra o coração escondido
+        document.getElementById('hidden-heart').addEventListener('click', function() {
+            document.getElementById('phase1').style.display = 'none';
+            document.getElementById('phase2').style.display = 'block';
+        });
+
+        // Fase 2: Resolver o enigma
+        function checkAnswer() {
+            const answer = document.getElementById('riddle-answer').value.toLowerCase();
+            if (answer === 'amor') {
+                document.getElementById('phase2').style.display = 'none';
+                document.getElementById('final-message').style.display = 'block';
+            } else {
+                document.getElementById('riddle-feedback').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
